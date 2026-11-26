@@ -16,21 +16,23 @@ export function Reveal({
   return (
     <motion.div
       className={className}
-      initial={reduce ? false : { opacity: 0, y: 14 }}
+      initial={reduce ? false : { opacity: 0, y: 16 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
-      transition={{ duration: 0.5, delay, ease: [0.22, 1, 0.36, 1] }}
+      transition={{ duration: 0.6, delay, ease: [0.22, 1, 0.36, 1] }}
     >
       {children}
     </motion.div>
   );
 }
 
-export function SectionHeading({ title, description }: { title: string; description?: string }) {
+export function SectionHeading({ eyebrow, title }: { eyebrow: string; title: React.ReactNode }) {
   return (
-    <Reveal className="mb-10 max-w-2xl">
-      <h2 className="font-display text-3xl font-semibold tracking-tight text-ink sm:text-[2.1rem]">{title}</h2>
-      {description && <p className="mt-3 text-[17px] text-muted">{description}</p>}
+    <Reveal className="mb-12 max-w-2xl sm:mb-14">
+      <p className="eyebrow">{eyebrow}</p>
+      <h2 className="mt-3 font-display text-[2.1rem] font-medium leading-[1.1] tracking-tight text-ink sm:text-[2.6rem]">
+        {title}
+      </h2>
     </Reveal>
   );
 }
@@ -45,15 +47,15 @@ export function Section({
   className?: string;
 }) {
   return (
-    <section id={id} className={`relative py-20 sm:py-24 ${className}`}>
+    <section id={id} className={`relative py-20 sm:py-28 ${className}`}>
       <div className="mx-auto max-w-6xl px-5 sm:px-8">{children}</div>
     </section>
   );
 }
 
-export function Badge({ children }: { children: React.ReactNode }) {
+export function Tag({ children }: { children: React.ReactNode }) {
   return (
-    <span className="inline-flex items-center rounded-md bg-card-2 px-2 py-1 text-xs font-medium text-ink-2 ring-1 ring-line">
+    <span className="inline-flex items-center rounded-full border border-line bg-bg px-2.5 py-1 text-xs font-medium text-ink-2">
       {children}
     </span>
   );

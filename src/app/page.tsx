@@ -1,11 +1,8 @@
 import { Navbar } from "@/components/Navbar";
-import { Hero } from "@/components/Hero";
 import { About } from "@/components/About";
-import { Skills } from "@/components/Skills";
 import { Projects } from "@/components/Projects";
-import { Lab } from "@/components/Lab";
 import { Experience } from "@/components/Experience";
-import { Certifications } from "@/components/Certifications";
+import { Skills } from "@/components/Skills";
 import { Contact } from "@/components/Contact";
 import { SocialLinks } from "@/components/Brand";
 import { profile } from "@/data/profile";
@@ -21,19 +18,16 @@ export default function Home() {
       </a>
       <Navbar />
       <main>
-        <Hero />
         <About />
-        <Skills />
         <Projects />
-        <Lab />
         <Experience />
-        <Certifications />
+        <Skills />
         <Contact />
       </main>
       <footer className="border-t border-line">
         <div className="mx-auto flex max-w-6xl flex-col items-center justify-between gap-4 px-5 py-8 sm:flex-row sm:px-8">
           <p className="text-sm text-muted">
-            © {new Date().getFullYear()} {profile.name} · Built with Next.js, Tailwind CSS & Framer Motion
+            © {new Date().getFullYear()} {profile.name} · {profile.location}
           </p>
           <SocialLinks />
         </div>

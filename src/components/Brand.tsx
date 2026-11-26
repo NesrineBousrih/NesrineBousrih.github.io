@@ -4,8 +4,8 @@ import { profile } from "@/data/profile";
 
 export function SocialLinks({ className = "" }: { className?: string }) {
   const links = [
-    { href: profile.github, label: "GitHub", Icon: FaGithub },
     { href: profile.linkedin, label: "LinkedIn", Icon: FaLinkedin },
+    { href: profile.github, label: "GitHub", Icon: FaGithub },
     { href: `mailto:${profile.email}`, label: "Email", Icon: Mail },
   ];
   return (
@@ -17,19 +17,12 @@ export function SocialLinks({ className = "" }: { className?: string }) {
             target={href.startsWith("http") ? "_blank" : undefined}
             rel="noreferrer"
             aria-label={label}
-            className="grid size-10 place-items-center rounded-lg text-muted transition hover:bg-card-2 hover:text-ink"
+            className="grid size-10 place-items-center rounded-full text-muted transition hover:bg-accent-soft hover:text-accent"
           >
-            <Icon className="size-[19px]" aria-hidden />
+            <Icon className="size-[18px]" aria-hidden />
           </a>
         </li>
       ))}
     </ul>
-  );
-}
-
-/** Small "NB" monogram used in the nav and as the portrait placeholder. */
-export function Monogram({ className = "" }: { className?: string }) {
-  return (
-    <span className={`grid place-items-center rounded-lg bg-ink font-display font-semibold text-bg ${className}`}>NB</span>
   );
 }

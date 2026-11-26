@@ -1,29 +1,32 @@
 import type { Metadata, Viewport } from "next";
-import "@fontsource-variable/sora";
+import "@fontsource-variable/fraunces";
+import "@fontsource-variable/fraunces/wght-italic.css";
 import "@fontsource-variable/manrope";
-import "@fontsource-variable/jetbrains-mono";
 import "./globals.css";
 import { profile } from "@/data/profile";
 
+const title = `${profile.name} — Software Engineer · DevOps & SRE`;
+
 export const metadata: Metadata = {
-  title: `${profile.name} — DevOps & SRE Engineer`,
+  title,
   description: profile.intro,
   openGraph: {
-    title: `${profile.name} — DevOps & SRE Engineer`,
+    title,
     description: profile.intro,
-    type: "website",
+    type: "profile",
+    images: [`/images/${profile.portrait}`],
   },
 };
 
 export const viewport: Viewport = {
   themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#f4f6fb" },
-    { media: "(prefers-color-scheme: dark)", color: "#060a17" },
+    { media: "(prefers-color-scheme: light)", color: "#faf6f0" },
+    { media: "(prefers-color-scheme: dark)", color: "#1b1714" },
   ],
 };
 
-/* Runs before paint so the saved theme never flashes */
-const themeScript = `(function(){try{var t=localStorage.getItem('theme');if(!t){t=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'}if(t==='dark')document.documentElement.classList.add('dark')}catch(e){document.documentElement.classList.add('dark')}})();`;
+/* Light by default; dark only when the visitor chose it. Runs before paint so there is no flash. */
+const themeScript = `(function(){try{if(localStorage.getItem('theme')==='dark')document.documentElement.classList.add('dark')}catch(e){}})();`;
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (

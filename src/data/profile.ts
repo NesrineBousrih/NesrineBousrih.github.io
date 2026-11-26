@@ -9,257 +9,168 @@
 export const profile = {
   name: "Nesrine Bousrih",
   firstName: "Nesrine",
-  role: "DevOps & SRE · Cloud & DevSecOps",
-  location: "Tunisia",
+  role: "Software Engineer · DevOps & SRE",
+  location: "Monastir, Tunisia",
+  availability: "Open to a PFE internship · Feb 2027",
 
-  availability: "Available for PFE Internship – February 2027",
-  greeting: "Hi, I'm Nesrine 👋",
-  headline: ["Building Reliable Systems.", "Automating the Future."],
-  intro: "Software engineer specializing in DevOps & SRE — CI/CD, containers, cloud and reliable systems.",
+  intro:
+    "Software engineer studying DevOps & Site Reliability Engineering. I build full-stack web apps, containerized microservices and the CI/CD pipelines that ship them.",
 
   email: "nesrinebousrih11@gmail.com",
   github: "https://github.com/NesrineBousrih",
   linkedin: "https://www.linkedin.com/in/nesrine-bousrih-106a81328/",
 
-  /**
-   * CV: put your PDF in /public/cv/ and set the file name here,
-   * e.g. "Nesrine-Bousrih-CV.pdf". While it is null, the button
-   * becomes "Request my CV" and opens an email instead.
-   */
-  cvFile: null as string | null,
+  /** Files in /public/cv/ */
+  cv: [
+    { lang: "English", short: "EN", file: "Nesrine-Bousrih-CV-EN.pdf" },
+    { lang: "Français", short: "FR", file: "Nesrine-Bousrih-CV-FR.pdf" },
+  ],
 
-  /**
-   * Portrait: put your photo in /public/images/ and set the file
-   * name here, e.g. "portrait.jpg". While it is null, a styled
-   * placeholder with your initials is shown.
-   */
-  portrait: null as string | null,
+  /** File in /public/images/ */
+  portrait: "portrait.jpg",
 };
 
 export const about = {
-  title: "A little about me",
-  // Short version for the site — replace with your LinkedIn "About" text if you prefer.
   paragraphs: [
-    "Master's student in DevOps & Site Reliability Engineering at Horizon School of Digital Technologies, with a Bachelor's degree in Software Engineering from the Faculty of Sciences of Monastir (Mention Très Bien).",
-    "I enjoy automating how software is built, shipped and kept reliable — CI/CD, containers, cloud and DevSecOps.",
+    "I'm a Software Engineering graduate (Faculty of Sciences of Monastir) now doing a Master's in DevOps & SRE at Horizon University. Through two internships and many side projects I've worked across the whole lifecycle — from API design and frontends to Docker, CI/CD and AWS.",
+    "I like turning slow, manual work into something automatic and reliable. Outside of code: piano, cinema, learning languages, and running a small crochet business.",
   ],
   facts: [
-    { icon: "education", label: "Education", value: "MSc DevOps & SRE – Horizon University" },
-    { icon: "background", label: "Background", value: "Bachelor's degree in Software Engineering" },
-    { icon: "location", label: "Location", value: "Tunisia" },
-    { icon: "goal", label: "Looking for", value: "PFE internship · Feb – Jul 2027" },
+    { label: "Studying", value: "MSc DevOps & SRE, Horizon University" },
+    { label: "Degree", value: "BSc Software Engineering" },
+    { label: "Based in", value: "Monastir, Tunisia" },
+    { label: "Languages", value: "Arabic · French (B2) · English" },
   ],
 };
 
-/** Icon keys are mapped to official logos in components/TechIcon.tsx */
-export const skillGroups = [
-  {
-    title: "Programming & Development",
-    items: [
-      { name: "Python", icon: "python" },
-      { name: "JavaScript", icon: "javascript" },
-      { name: "TypeScript", icon: "typescript" },
-      { name: "Java", icon: "java" },
-      { name: "C/C++", icon: "cpp" },
-      { name: "PHP", icon: "php" },
-    ],
-  },
-  {
-    title: "DevOps & Cloud",
-    items: [
-      { name: "Docker", icon: "docker" },
-      { name: "Docker Compose", icon: "docker" },
-      { name: "AWS", icon: "aws" },
-      { name: "Terraform", icon: "terraform" },
-      { name: "GitHub Actions", icon: "githubactions" },
-      { name: "CI/CD", icon: "cicd" },
-      { name: "Linux", icon: "linux" },
-    ],
-  },
-  {
-    title: "Monitoring & SRE",
-    items: [
-      { name: "Prometheus", icon: "prometheus" },
-      { name: "Grafana", icon: "grafana" },
-      { name: "SLO", icon: "slo" },
-      { name: "Observability", icon: "observability" },
-      { name: "Reliability Engineering", icon: "reliability" },
-    ],
-  },
-  {
-    title: "Backend & Architecture",
-    items: [
-      { name: "Django", icon: "django" },
-      { name: "REST APIs", icon: "api" },
-      { name: "Angular", icon: "angular" },
-      { name: "Node.js", icon: "nodejs" },
-      { name: "Microservices", icon: "microservices" },
-      { name: "Kafka", icon: "kafka" },
-      { name: "gRPC", icon: "grpc" },
-    ],
-  },
-  {
-    title: "Testing & Quality",
-    items: [
-      { name: "Selenium", icon: "selenium" },
-      { name: "Cucumber", icon: "cucumber" },
-      { name: "Gherkin", icon: "cucumber" },
-      { name: "BDD", icon: "bdd" },
-      { name: "Postman", icon: "postman" },
-    ],
-  },
-];
+export type Shot = { src: string; alt: string; width: number; height: number };
 
 export type Project = {
   slug: string;
   name: string;
   tagline: string;
   description: string;
-  features?: string[];
+  points?: string[];
   tech: string[];
-  github?: string; // leave undefined when the code isn't public
-  /** Put a screenshot in /public/images/ and set its file name here to replace the generated cover. */
-  image?: string;
-  cover: "devbridge" | "gourmet" | "nest" | "monitor" | "yarn" | "scripts";
-  featured?: boolean;
+  github?: string;
+  /** Screenshots in /public/images/ — projects with shots are shown large. */
+  shots?: Shot[];
 };
 
 export const projects: Project[] = [
   {
     slug: "devbridge",
     name: "DevBridge",
-    tagline: "Development Project Automation Platform",
+    tagline: "End-of-studies project · Flesk",
     description:
-      "Generates and configures ready-to-run development projects. Built during my PFE internship at Flesk.",
-    features: [
-      "Project scaffolding",
-      "Schema → entity generation",
-      "API & service generation",
-      "Docker-based execution",
-      "ZIP export",
-      "Admin dashboard",
+      "A platform that removes manual project setup. Point it at a PostgreSQL database and it generates a ready-to-run Django REST backend and a matching Angular frontend — turning days of setup into minutes.",
+    points: [
+      "Schema → models, serializers and REST API",
+      "Angular CRUD screens for every entity",
+      "Full stack containerized with Docker Compose",
+      "Exports a project teams can clone and extend",
     ],
-    tech: ["Angular 17", "Django", "PostgreSQL", "Docker"],
+    tech: ["Angular", "Django REST", "PostgreSQL", "Docker"],
     github: "https://github.com/NesrineBousrih/DevBridge-backend",
-    cover: "devbridge",
-    featured: true,
-  },
-  {
-    slug: "gourmet-go",
-    name: "Gourmet-Go",
-    tagline: "Distributed order system",
-    description:
-      "gRPC microservices with Saga orchestration, deployed by a GitHub Actions pipeline.",
-    tech: ["gRPC", "Docker", "GitHub Actions", "PostgreSQL"],
-    github: "https://github.com/NesrineBousrih/gourmet-go",
-    cover: "gourmet",
-  },
-  {
-    slug: "microservices-nest",
-    name: "Microservices with NestJS",
-    tagline: "REST · GraphQL · gRPC · Kafka",
-    description:
-      "Five services, each using a different way to communicate.",
-    tech: ["NestJS", "REST", "GraphQL", "gRPC", "Kafka"],
-    github: "https://github.com/NesrineBousrih/microservices-nest",
-    cover: "nest",
-  },
-  {
-    slug: "init-automation",
-    name: "Project Init Automation",
-    tagline: "One-command Angular & Django setup",
-    description:
-      "Scripts that create Dockerized Angular and Django projects in one command.",
-    tech: ["Bash", "Docker Compose"],
-    github: "https://github.com/NesrineBousrih/Django-Init-Automation",
-    cover: "scripts",
-  },
-  {
-    slug: "devops-monitor",
-    name: "DevOps Monitor",
-    tagline: "Service registry dashboard",
-    description:
-      "Register, search and inspect services in one dashboard.",
-    tech: ["Angular 17", "SSR", "TypeScript"],
-    github: "https://github.com/NesrineBousrih/devops-monitor",
-    cover: "monitor",
+    shots: [
+      { src: "devbridge-1.jpg", alt: "DevBridge landing page", width: 1062, height: 511 },
+      { src: "devbridge-2.jpg", alt: "DevBridge “How it works” section", width: 1060, height: 508 },
+    ],
   },
   {
     slug: "yarn-corner",
     name: "Yarn Corner",
     tagline: "Website for a handmade crochet brand",
     description:
-      "Website for a Tunisian handmade crochet brand.",
-    tech: ["React", "TypeScript", "Tailwind"],
+      "The online shop window for Yarn Corner, a Tunisian handmade crochet brand: a soft, image-led catalogue with product colours, prices and one-tap WhatsApp ordering.",
+    points: ["Responsive, image-first design", "Collection with colours & prices", "Order directly via WhatsApp"],
+    tech: ["React", "TypeScript", "Tailwind CSS"],
     github: "https://github.com/NesrineBousrih/yarn-corner-website",
-    cover: "yarn",
+    shots: [
+      { src: "yarn-corner-1.jpg", alt: "Yarn Corner home page", width: 1600, height: 763 },
+      { src: "yarn-corner-2.jpg", alt: "Yarn Corner collection page", width: 1600, height: 722 },
+    ],
+  },
+  {
+    slug: "gourmet-go",
+    name: "GourmetGo",
+    tagline: "Food ordering on microservices",
+    description:
+      "Menu, orders, users and payments as independent services talking over gRPC, with a GitHub Actions pipeline, Selenium tests and deployment to AWS.",
+    tech: ["gRPC", "Docker", "GitHub Actions", "AWS"],
+    github: "https://github.com/NesrineBousrih/gourmet-go",
+  },
+  {
+    slug: "distributed-orders",
+    name: "Distributed Order Platform",
+    tagline: "REST · GraphQL · gRPC · Kafka",
+    description:
+      "A reference architecture showing when to use each protocol, built with NestJS and Kafka in KRaft mode.",
+    tech: ["NestJS", "GraphQL", "Kafka"],
+    github: "https://github.com/NesrineBousrih/microservices-nest",
+  },
+  {
+    slug: "devops-monitor",
+    name: "DevOps Monitor",
+    tagline: "Infrastructure dashboard",
+    description:
+      "An Angular dashboard bringing service health, pipeline status and performance metrics into one view for on-call engineers.",
+    tech: ["Angular", "REST", "Chart.js"],
+    github: "https://github.com/NesrineBousrih/devops-monitor",
+  },
+  {
+    slug: "test-automation",
+    name: "BDD Test Automation Suite",
+    tagline: "End-to-end testing",
+    description:
+      "Selenium + Cucumber suite using the Page Object Model, stable waits and HTML reports with screenshots on failure.",
+    tech: ["Java", "Selenium", "Cucumber"],
   },
 ];
 
-export const timeline = [
+export const experience = [
   {
-    kind: "education",
-    title: "MSc DevOps & SRE",
-    org: "Horizon University",
-    period: "2025 – 2027",
-    description: "CI/CD, Kubernetes, AWS and SRE practices.",
-  },
-  {
-    kind: "work",
-    title: "PFE Internship — DevBridge",
+    role: "Web Development Intern (PFE)",
     org: "Flesk",
+    place: "Monastir",
     period: "Feb – Jun 2025",
-    description: "Built a platform that automates project generation with Angular, Django, PostgreSQL and Docker.",
+    summary:
+      "Built DevBridge, which generates a Django REST backend and Angular frontend from an existing PostgreSQL database, fully containerized with Docker.",
   },
   {
-    kind: "education",
-    title: "Bachelor's degree in Software Engineering",
-    org: "Faculty of Sciences of Monastir",
-    period: "2022 – 2025",
-    description: "",
+    role: "Research & Development Intern",
+    org: "Clevertech France",
+    place: "Tunis",
+    period: "Jul 2024",
+    summary:
+      "Shipped four modules of ARCHIMATCH, a SaaS platform for architects and clients — showcase, quoting & reviews, admin back-office — plus a chatbot and the Figma prototypes.",
   },
-] as const;
+];
 
-/**
- * status: "completed" — only once confirmed
- *         "in-progress" — currently learning
- *         "planned" — on the roadmap
- * Add `url` when you have a credential link.
- */
-export const certifications: {
-  title: string;
-  issuer: string;
-  kind: "certification" | "achievement";
-  status: "completed" | "in-progress" | "planned";
-  note?: string;
-  url?: string;
-}[] = [
-  {
-    title: "DevOps Engineering",
-    issuer: "Coursera",
-    kind: "certification",
-    status: "in-progress",
-  },
-  {
-    title: "Data2Innov – AINC Edition",
-    issuer: "Winning team",
-    kind: "achievement",
-    status: "completed",
-  },
-  {
-    title: "Technical certifications",
-    issuer: "Cloud & Kubernetes certifications",
-    kind: "certification",
-    status: "planned",
-  },
+export const education = [
+  { title: "Master's in DevOps & Site Reliability Engineering", org: "Horizon University, Sousse", period: "2025 – 2027" },
+  { title: "Bachelor's in Software Engineering", org: "Faculty of Sciences of Monastir", period: "2022 – 2025" },
+];
+
+export const certifications = [
+  { title: "Winner — AI Night Challenge (Data2Innov), 5th edition", date: "Feb 2026" },
+  { title: "IBM DevOps and Software Engineering Professional Certificate", date: "Apr 2026" },
+  { title: "Microsoft Cloud Support Associate Professional Certificate", date: "Apr 2026" },
+  { title: "IEEE Web Development & AI Fundamentals trainings", date: "2023 – 2024" },
+];
+
+export const skillGroups = [
+  { title: "DevOps & Cloud", items: ["Docker", "Docker Compose", "GitHub Actions", "CI/CD", "AWS (EC2, S3)", "Terraform", "Linux", "Git"] },
+  { title: "Monitoring & SRE", items: ["Prometheus", "Grafana", "Observability", "SLOs"] },
+  { title: "Backend & APIs", items: ["Django REST", "NestJS", "Node.js", "REST", "GraphQL", "gRPC", "Kafka", "PostgreSQL", "MySQL"] },
+  { title: "Frontend & Design", items: ["Angular", "React", "TypeScript", "Tailwind CSS", "Figma"] },
+  { title: "Languages", items: ["Python", "JavaScript", "Java", "C / C++", "C#", "PHP"] },
+  { title: "Testing", items: ["Selenium", "Cucumber / Gherkin", "BDD", "Postman"] },
 ];
 
 export const navLinks = [
-  { href: "#home", label: "Home" },
   { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
   { href: "#projects", label: "Projects" },
-  { href: "#lab", label: "DevOps Lab" },
   { href: "#experience", label: "Experience" },
   { href: "#contact", label: "Contact" },
 ];
