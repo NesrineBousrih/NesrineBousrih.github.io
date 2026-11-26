@@ -127,6 +127,29 @@ html.theme-transition *::after {
   }
 }
 
+/* Faint dot grid — a quiet nod to dashboards & infra diagrams */
+.bg-dots {
+  background-image: radial-gradient(var(--line-strong) 1px, transparent 1.2px);
+  background-size: 24px 24px;
+  mask-image: radial-gradient(ellipse 75% 70% at 30% 35%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 75% 70% at 30% 35%, #000 20%, transparent 75%);
+  opacity: 0.7;
+}
+
+/* Heartbeat line: a short bright pulse travelling along a faint trace */
+@keyframes pulse-run {
+  from {
+    stroke-dashoffset: 1600;
+  }
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.pulse-run {
+  stroke-dasharray: 140 1460;
+  animation: pulse-run 7s linear infinite;
+}
+
 @keyframes ping-soft {
   0% {
     transform: scale(1);
@@ -146,7 +169,11 @@ html.theme-transition *::after {
   html {
     scroll-behavior: auto;
   }
-  .ping {
+  .ping,
+  .pulse-run {
     animation: none !important;
+  }
+  .pulse-run {
+    display: none;
   }
 }
